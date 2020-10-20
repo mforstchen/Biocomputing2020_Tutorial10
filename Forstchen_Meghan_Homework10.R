@@ -31,18 +31,35 @@ for (i in 1:nrow(Scores)){
 #Number to guess will be generated from numbers between 1:100
 #User will be able to guess up to 10 times
 
-#Preallocate locations for number, correct outputs, and incorrect outputs
-
-Number =0
-Correct =0
-Incorrect =0
-
 #Maximum number of guesses made
 MaximumGuess=10
 
-#Create a vector with numbers 1:100 to guess from
-AllNumbers <- c(1:100)
+#The random number is generated using random integer function
+Number <- sample(1:100, 1)
 
-#Use the sample function to get 1 random number from the AllNumbers vector
-NumberSelected <- sample(AllNumbers,1)
+
+#Ask the user to guess the number
+cat("I am thinking of a number between 1 and 100. What is it?")
+
+# Solicit input from the user
+
+Input <- readline(prompt="Enter Number: ")
+
+
+for(i in 1:MaximumGuess) {
+  if(Input == Number) {
+    cat("You got the correct number!")
+  } else {        
+    if(i == MaximumGuess) {
+      cat("Too bad, you ran out of guesses!")
+    } else {
+      if(Input < Number) {
+        cat("Too low! Guess again!")
+      } else {
+        cat("You are too high. Guess again!")
+      }
+      Input <- readline(prompt="Enter Number: ")
+    }            
+  }
+}
 
