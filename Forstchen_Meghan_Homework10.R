@@ -23,3 +23,26 @@ for (i in 1:nrow(Scores)){
     MSU_Score_Sum=MSU_Score_Sum+cumsum(Scores$score[i])
   }
   }
+
+
+#Question 2
+
+#Builds a "Guess a Number Game" with the following rules
+#Number to guess will be generated from numbers between 1:100
+#User will be able to guess up to 10 times
+
+#Preallocate locations for number, correct outputs, and incorrect outputs
+
+Number =0
+Correct =0
+Incorrect =0
+
+#Maximum number of guesses made
+MaximumGuess=10
+
+#Create a vector with numbers 1:100 to guess from
+AllNumbers <- c(1:100)
+
+#Use the sample function to get 1 random number from the AllNumbers vector
+NumberSelected <- sample(AllNumbers,1)
+
