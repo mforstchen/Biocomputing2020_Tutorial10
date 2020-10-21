@@ -40,12 +40,10 @@ for(i in 1:nrow(cumulative_scores)){
 #Generate a plot using the plot function of cumulative scores and time
 plot(cumulative_scores$Time, cumulative_scores$Cumulative.UW.Score, type = "l",
      col = "red", xlab = "Time (min)", ylab = "Score", ylim = c(0,50))
-  lines(cumulative_scores$Time, cumulative_scores$Cumulative.MSU.Score, type ="l",
-        col= "dark green")
-  legend("topleft", inset=.05,
-         c("UW"), fill= "red")
-  legend("top", inset=.05,
-         c("MSU"), fill= "dark green")
+lines(cumulative_scores$Time, cumulative_scores$Cumulative.MSU.Score, type ="l",
+      col= "dark green")
+legend("topleft", inset=.05,
+       c("UW = Red Line", "MSU = Green Line"))
 
 
 #Question 2
