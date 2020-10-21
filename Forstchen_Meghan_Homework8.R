@@ -1,11 +1,11 @@
 #Question 1
-#set working directory to location of files for tutorial
+#set working directory
 setwd("~/Desktop/Biocomputing2020_Tutorial10/")
 
-#Read in the UWvMSU_1-22-13 text file as a dataframe called 
+#Read in the UWvMSU_1-22-13 text file as a dataframe called UWvMSU
 UWvMSU<- read.csv("UWvMSU_1-22-13.txt", sep = "", header = TRUE, stringsAsFactors = FALSE)
 
-#Determine the number of rows necessary for the dataframe
+#Determine the number of rows for a new dataframe to preallocate outputs
 nrow(UWvMSU)
 
 #Preallocate a dataframe for time, scores, and cumulative scores
@@ -14,7 +14,6 @@ cumulative_scores <- data.frame("Time" = numeric(50),
                                 "MSU Score" = numeric(50),
                                 "Cumulative UW Score" = numeric(50),
                                 "Cumulative MSU Score" = numeric(50))
-
 
 #Enter time from UWvMSU dataframe into cumulative_scores
 cumulative_scores$Time <- UWvMSU$time
@@ -37,6 +36,16 @@ for(i in 1:nrow(cumulative_scores)){
 for(i in 1:nrow(cumulative_scores)){
   cumulative_scores$Cumulative.MSU.Score[i]=sum(cumulative_scores$MSU.Score[1:i])
 }
+
+#Generate a plot using the plot function of cumulative scores and time
+plot(cumulative_scores$Time, cumulative_scores$Cumulative.UW.Score, type = "l",
+     col = "red", xlab = "Time (min)", ylab = "Score", ylim = c(0,50))
+  lines(cumulative_scores$Time, cumulative_scores$Cumulative.MSU.Score, type ="l",
+        col= "dark green")
+  legend("topleft", inset=.05,
+         c("UW"), fill= "red")
+  legend("top", inset=.05,
+         c("MSU"), fill= "dark green")
 
 
 #Question 2
